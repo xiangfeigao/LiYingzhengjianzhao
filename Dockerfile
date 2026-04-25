@@ -18,7 +18,7 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-# 安装 OpenCV 需要的所有系统依赖
+# 安装 OpenCV 需要的系统依赖（修正：移除不存在的 libxcb-util1）
 RUN apt-get update && apt-get install -y \
     curl \
     libgl1-mesa-glx \
@@ -39,7 +39,6 @@ RUN apt-get update && apt-get install -y \
     libxcb-sync1 \
     libxcb-xinerama0 \
     libxcb-xv0 \
-    libxcb-util1 \
     && rm -rf /var/lib/apt/lists/*
 
 # 复制并安装 Python 依赖
