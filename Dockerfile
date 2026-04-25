@@ -16,11 +16,13 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
-RUN pip3 install --no-cache-dir -r requirements.txt
+
+# 强制重新安装，清除缓存，并验证版本
+RUN pip3 install --no-cache-dir --force-reinstall -r requirements.txt && \
+    pip3 show gradio | grep Version
 
 COPY . .
 
-# 下载模型（可选，也可以让用户运行时挂载）
 RUN mkdir -p /app/src/model && \
     wget -O /tmp/models.zip \
     "https://github.com/aoguai/LiYing/releases/download/v3.2.0/LiYing_model.zip" && \
