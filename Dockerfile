@@ -2,25 +2,16 @@
 # 阶段1：下载模型
 FROM alpine:latest AS model-downloader
 
-RUN apk add --no-cache wget
+RUN apk add --no-cache wget unzip
 
 WORKDIR /models
 
-# 下载 Yunet 模型 (~3 MB)
-RUN wget -O face_detection_yunet_2023mar.onnx \
-    "https://github.com/opencv/opencv_zoo/raw/main/models/face_detection_yunet/face_detection_yunet_2023mar.onnx"
-
-# 下载 RMBG 模型 (~176 MB)
-RUN wget -O RMBG-1.4-model.onnx \
-    "https://huggingface.co/brunoais/BRIA-RMBG-1.4/resolve/main/model.onnx"
-
-# 下载 YOLOv8n-pose 模型 (~6.5 MB)
-RUN wget -O yolov8n-pose.onnx \
-    "https://github.com/ultralytics/assets/releases/download/v8n/yolov8n-pose.onnx"
-
-# 验证下载
-RUN ls -lh && \
-    echo "Models downloaded successfully"
+# 下载官方打包的模型压缩包（约 180-200 MB）
+RUN wget -O LiYing_model.zip \
+    "https://github.com/aoguai/LiYing/releases/download/v3.2.0/LiYing_model.zip" && \
+    unzip LiYing_model.zip && \
+    rm LiYing_model.zip && \
+    ls -lh
 
 # 阶段2：运行环境
 FROM python:3.10-slim
