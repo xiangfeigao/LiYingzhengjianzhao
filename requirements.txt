@@ -2,10 +2,12 @@ click
 cffi
 colorama
 mozjpeg_lossless_optimization
-onnxruntime>=1.14.0
 orjson>=3.10.7
-gradio>=4.44.1
-Pillow
 opencv-python
 numpy
 piexif
+gradio==4.44.1
+opencv-python==4.10.0.84
+numpy==1.26.4
+Pillow==10.4.0
+onnxruntime==1.19.2
