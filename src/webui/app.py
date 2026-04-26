@@ -16,6 +16,8 @@ import numpy as np
 import gradio as gr
 import pandas as pd
 from PIL import Image
+import os
+os.environ["no_proxy"] = "localhost,127.0.0.1,::1"
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 src_dir = os.path.dirname(current_dir)
@@ -1302,4 +1304,4 @@ if __name__ == "__main__":
 
     print(f"Starting Gradio server on {args.server_name}:{args.server_port}")
     print(f"Deployment mode: {deployment_mode}")
-    demo.launch(share=False, server_name=args.server_name, server_port=args.server_port, ssl_verify=False)
+    demo.launch(share=True, server_name=args.server_name, server_port=args.server_port, ssl_verify=False)
