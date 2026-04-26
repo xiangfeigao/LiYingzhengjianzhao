@@ -6,7 +6,7 @@ orjson>=3.10.7
 opencv-python
 numpy
 piexif
-gradio==4.44.1           # 保持官方版本，确保 WebUI 功能正常
+gradio==5.22.0         # 保持官方版本，确保 WebUI 功能正常
 huggingface-hub==0.24.5  # 仅锁定引发冲突的依赖版本
 pydantic==2.10.6
 opencv-python==4.10.0.84
