@@ -1,3 +1,6 @@
+import os
+os.environ["NO_PROXY"] = "localhost,127.0.0.1,::1"
+os.environ["no_proxy"] = "localhost,127.0.0.1,::1"
 import argparse
 import json
 import locale
@@ -16,8 +19,7 @@ import numpy as np
 import gradio as gr
 import pandas as pd
 from PIL import Image
-import os
-os.environ["no_proxy"] = "localhost,127.0.0.1,::1"
+
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 src_dir = os.path.dirname(current_dir)
