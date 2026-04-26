@@ -1306,4 +1306,4 @@ if __name__ == "__main__":
 
     print(f"Starting Gradio server on {args.server_name}:{args.server_port}")
     print(f"Deployment mode: {deployment_mode}")
-    demo.launch(share=True, server_name=args.server_name, server_port=args.server_port, ssl_verify=False)
+    demo.launch(share=True, server_name="0.0.0.0", server_port=7860, ssl_verify=False)
